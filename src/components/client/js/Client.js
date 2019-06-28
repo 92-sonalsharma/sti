@@ -178,7 +178,7 @@ class Client extends React.Component {
     // const isValidForm = this.validate();
     // if (isValidForm) {
     event.preventDefault();
-    const resp = await fetch("https://localhost:8080/company/add", {
+    const resp = await fetch("http://localhost:8080/company/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -197,7 +197,7 @@ class Client extends React.Component {
 
   fetchClient = async event => {
     const resp = await fetch(
-      `https://localhost:8080/company/${this.props.location.state.id}`,
+      `http://localhost:8080/company/${this.props.location.state.id}`,
       {
         method: "GET",
         headers: {
