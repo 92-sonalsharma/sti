@@ -1,47 +1,59 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import ClientList from './components/client/js/ManageClients'
-import { Route, Switch, Link } from 'react-router-dom';
-import {Navbar, Nav, NavDropdown,Button} from 'react-bootstrap';
+import ClientList from "./components/client/js/ManageClients";
+import Client from "./components/client/js/Client";
+import { Route, Switch } from "react-router-dom";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Jumbotron,
+  Container
+} from "react-bootstrap";
 
-function HomePage(){
-  return(
-    <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-            <h1 class="display-4">IQVIA-STI</h1>
-            <p class="lead">
-              IQVIA-STI is in the business of generating and managing pharmacy
-              discount cards for their pharma customers.
-            </p>
-          </div>
+function HomePage() {
+  return (
+    <div>
+      <Jumbotron fluid>
+        <Container>
+          <h1>IQVIA-STI</h1>
+          <p>
+            IQVIA-STI is in the business of generating and managing pharmacy
+            discount cards for their pharma customers.
+          </p>
           <hr class="my-4" />
           <p className="App-intro">
             To get started, <code>register</code> yourself.
           </p>
-          <Button variant="outline-primary">Sign Up</Button>
-        </div>
+          <a class="btn btn-primary btn-lg" href="#" role="button">
+            Sign Up
+          </a>
+        </Container>
+      </Jumbotron>
+    </div>
   );
 }
 
-function NavBar(){
-  return(
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
-  <Navbar.Brand href="/">IQVIA-STI</Navbar.Brand>
-  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="mr-auto">
-      <NavDropdown title="Invoicing" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="/clients">Manage Invoice Tables</NavDropdown.Item>
-      </NavDropdown>
-    </Nav>
-    <Nav>
-      <Nav.Link href="#deets">
-                    <span class="glyphicon glyphicon-log-in" /> Login
-                  </Nav.Link>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>
+function NavBar() {
+  return (
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand href="/">IQVIA-STI</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <NavDropdown title="Invoicing" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="/clients">
+              Manage Invoice Tables
+            </NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+        <Nav>
+          <Nav.Link href="#">
+          <span className="glyphicon glyphicon-log-in" /> Login
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
@@ -49,11 +61,13 @@ class App extends Component {
   render() {
     return (
       <div>
-      <NavBar />
+        <NavBar />
         <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/clients" component={ClientList} />
-      </Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/clients" component={ClientList} />
+          <Route path="/modifyClient" component={Client} />
+          <Route path="/modifyClient/edit/:id" component={Client} />
+        </Switch>
       </div>
     );
   }
