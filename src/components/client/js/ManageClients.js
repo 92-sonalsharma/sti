@@ -8,7 +8,7 @@ class ClientList extends React.Component {
   };
 
   getUsers = async () => {
-    const resp = await fetch("http://172.16.6.77:8080/companys", {
+    const resp = await fetch("https://localhost:3030/companys", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
