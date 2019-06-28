@@ -24,7 +24,10 @@ class Client extends React.Component {
   };
 
   componentDidMount() {
-    if (this.props.location.state != null || this.props.location.state != undefined) {
+    if (
+      this.props.location.state != null ||
+      this.props.location.state != undefined
+    ) {
       console.log("Calling..");
       this.fetchClient();
     }
@@ -480,13 +483,8 @@ class Client extends React.Component {
                     <Form.Control
                       type="email"
                       placeholder="Enter email id"
-                      disabled={
-                        this.state.user.companyContact.transmissionType ===
-                        "email"
-                          ? "disabled"
-                          : ""
-                      }
                       name="emailId"
+                      value={this.state.user.companyContact.emailId}
                       onChange={this.handleChangeContact}
                     />
                   </Col>
